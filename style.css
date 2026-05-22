@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, #1f0b1a, #3a1c31, #140511);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem;
+}
+
+/* Arkaplandaki Parıldayan Yıldızlar */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: starTwinkle 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Şifre ve İçerik Kartı */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    z-index: 10;
+    transition: all 0.5s ease;
+}
+
+h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    color: #ffb3c6;
+    text-shadow: 0 0 10px rgba(255, 179, 198, 0.5);
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    margin-bottom: 1rem;
+    transition: 0.3s;
+    -webkit-appearance: none;
+}
+
+input:focus {
+    border-color: #ff758f;
+    box-shadow: 0 0 15px rgba(255, 117, 143, 0.4);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    transition: 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
+}
+
+/* Ana İçerik Bölümü */
+.content {
+    display: none;
+    text-align: center;
+    animation: fadeIn 1.5s ease forwards;
+    max-height: 85vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+    font-size: 3.5rem;
+    color: #ff4d6d;
+    animation: heartbeat 1.2s infinite;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+p.note {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #f7edf0;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.sub-note {
+    font-size: 0.85rem;
+    color: #ffccd5;
+    font-style: italic;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+#error-msg {
+    color: #ff4d6d;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.falling-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    top: -20px;
+    will-change: transform;
+}
